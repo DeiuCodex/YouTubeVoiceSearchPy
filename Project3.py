@@ -6,6 +6,14 @@ Cautare automata pe YouToube - dintr-o lista deja existenta
 
 Profesor coordonator: Bogdan Dragulescu, Razvan Vilceanu
 Universitatea Politehnica Timisoara
+
+Echipa: 31-E1
+Studenti: Lupşan Adrian-Florin, Matală Andrei, Matieş Andrei-Mihai
+Tema proiect: D4-T2 | Detecție comanda vocală.
+
+Implementarea unui script ce căută un videoclip pe platforma youtube folosind o comandă vocală în
+care se precizează numele videoclipului.
+
 """
 
 import urllib.request
