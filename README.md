@@ -21,5 +21,6 @@ Se rostește ” search youtube for *** ”
 
 
 !!! Recomand o încăpere fără multe zgomote care pot perturba înregistrarea vocii. Recomand trecerea pe mut a microfonului după ce se rostește fraza.
+
 !!! Timpul de acces este de 200 secunde. După 200 secunde, programul se finalizează.
 
