@@ -1,6 +1,6 @@
 """
 @author DeiuCodex & Adrian & Andrei
-
+Contributed By @bansalshubhamcse21, @CLAUDIO SABATO
 ETcTI Anul 2, Sg 3.1, Seria B, 2022-2024
 Cautare automata pe YouToube - dintr-o lista deja existenta
 
