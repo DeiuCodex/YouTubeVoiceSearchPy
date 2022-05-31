@@ -116,12 +116,12 @@ def automateYoutube(comanda):
 
 if __name__ == '__main__':
     comenzi = {
-        'search youtube': automateYoutube}  # dictionar configurat in prealabil - ( comanda vocala: comanda exec sistem)
+        'search youtube': automateYoutube}                                           # dictionar configurat in prealabil - ( comanda vocala: comanda exec sistem)
     txt = 'search youtube for rammstein' or 'search youtube for lady gaga' or 'search youtube for metallica'
     txt_curat = txt.replace('', '+')
     txt_curat.split('for')
     comanda = ['search youtube', 'rammstein du hast', 'lady gaga poker face',
-               'metallica the unforgiven']  # lista cu melodii
+               'metallica the unforgiven']                                          # lista cu melodii
     executa_comanda = comenzi[comanda[0]]
     executa_comanda(comanda[1])
 
