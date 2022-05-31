@@ -107,7 +107,7 @@ def automateYoutube(comanda):
 
             try:
                 time.sleep(200)                                                            # timp de acces in browser -> 200s
-            except(KeyboardInterrupt) as e:
+            except (KeyboardInterrupt) as e:
                 print("Script-ul a fost inchis de catre utilizator.")
                 
 
