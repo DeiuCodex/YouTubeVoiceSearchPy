@@ -116,5 +116,5 @@ try:
         executa_comanda = comenzi[comanda[0]]
         executa_comanda(comanda[1])
 
-except(KeyboardInterrupt) as e:
-        print("Script-ul a fost inchis de catre utilizator.")
+except(KeyboardInterrupt, MemoryError, ResourceWarning, ModuleNotFoundError, ConnectionError) as e:
+        print("Script-ul a fost inchis de catre utilizator sau din alt motiv.")
