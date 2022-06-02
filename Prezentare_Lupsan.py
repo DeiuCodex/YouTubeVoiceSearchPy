@@ -12,13 +12,13 @@ Implementarea unui script ce căută un videoclip pe platforma youtube folosind 
 care se precizează numele videoclipului.
 """
 
-import urllib.request #  definește funcții și clase care ajută la deschiderea URL-urilor
-import pyttsx3 # este o bibliotecă de conversie text în vorbire în Python
-import re #funcțiile din acest modul vă permit să verificați dacă un anumit șir se potrivește cu o anumită expresie regulată
-import selenium #este folosit pentru a automatiza interacțiunea cu browserul web din Python.
+import urllib.request                                                               # definește funcții și clase care ajută la deschiderea URL-urilor
+import pyttsx3                                                                      # este o bibliotecă de conversie text în vorbire în Python
+import re                                                                           # verificare dacă un anumit șir se potrivește cu o anumită expresie regulată
+import selenium                                                                     # este folosit pentru a automatiza interacțiunea cu browserul web din Python
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-import speech_recognition as sr #Bibliotecă pentru efectuarea recunoașterii vorbirii cu API-ul Google Speech Recognition.
+import speech_recognition as sr                                                  # folosit pentru recnoașterii vorbirii cu API-ul Google Speech Recognition
 import time
 
 try:
