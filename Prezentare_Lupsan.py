@@ -12,23 +12,23 @@ Implementarea unui script ce căută un videoclip pe platforma youtube folosind 
 care se precizează numele videoclipului.
 """
 
-import urllib.request                                                               # definește funcții și clase care ajută la deschiderea URL-urilor
-import pyttsx3                                                                      # este o bibliotecă de conversie text în vorbire în Python
-import re                                                                           # verificare dacă un anumit șir se potrivește cu o anumită expresie regulată
+import urllib.request                                                               # defineste functii si clase care ajută la deschiderea URL-urilor
+import pyttsx3                                                                      # este o biblioteca de conversie text în vorbire în Python
+import re                                                                           # verificare dacă un anumit sir se potrivește cu o anumită expresie regulata
 import selenium                                                                     # este folosit pentru a automatiza interacțiunea cu browserul web din Python
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-import speech_recognition as sr                                                  # folosit pentru recnoașterii vorbirii cu API-ul Google Speech Recognition
-import time
+import speech_recognition as sr                                                     # folosit pentru recunoașterea vorbirii cu API-ul Google Speech Recognition
+import time                                                                         # functii pentru utiliziarea timpului
 
 try:
     def voice(message1):
         """
         Functie pentru Voice Assistant
         """
-        en = pyttsx3.init()
-        en.say(message1)
-        en.runAndWait()
+        en = pyttsx3.init()                                                         # initializare asistent vocal                                                         
+        en.say(message1)                                                            # comanda unde se primeste mesajul ce va fi rostit
+        en.runAndWait()                                                             # rostire si asteptarea unei noi comenzi
 
 
     voice("Please say a music that you want to search")
@@ -42,7 +42,7 @@ try:
         boo = False
 
         while not boo:
-            speak = sr.Recognizer()                                 # procesul de inregistrare audio
+            speak = sr.Recognizer()                                                # procesul de inregistrare audio
 
             try:
                 with sr.Microphone() as speaky:
@@ -50,8 +50,8 @@ try:
                     print("listening...")
                     searchquery = speak.listen(speaky)                            # inregistrarea vocii
                     MyText = speak.recognize_google(
-                        searchquery)                                  # utilizarea Google Speech Recognition pentru prelucrare audio
-                    MyText = MyText.lower()
+                        searchquery)                                              # utilizarea Google Speech Recognition pentru prelucrare audio
+                    MyText = MyText.lower()                                       # textul rostit va fi in totalitate 
 
             except sr.RequestError as e:
                 print("Nu am gasit rezultate; {0}".format(e))
@@ -73,25 +73,25 @@ try:
             else:
                 boo = True
                 print("OK")
-                search_keyword = MyText                                      # stocarea melodiei rostite intr-o variabila
-                search_keyword_clear = search_keyword.replace(' ','+')            # in loc de spatiu dintre cuvinte, se adauga "+" specific sintaxei
+                search_keyword = MyText                                           # stocarea melodiei rostite intr-o variabila
+                search_keyword_clear = search_keyword.replace(' ','+')            # in loc de spatiu dintre cuvinte, se adauga "+" specific sintaxei YouTube*
                 html = urllib.request.urlopen(
                     "https://www.youtube.com/results?search_query=" + search_keyword_clear)    # generarea link-ului
                 video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
 
-                print("Link-ul generat: https://www.youtube.com/watch?v=" + video_ids[0])
+                print("Link-ul generat: https://www.youtube.com/watch?v=" + video_ids[0])       # afisare link generat
 
                 print("Se asteapta deschidere Youtube...")
                 voice("I found what you want. This might take a while, please wait!")
 
                 time.sleep(10)
-                voice("Now I'm ready! Enjoy!")
+                voice("Now I'm ready! Enjoy!")                                                   # anuntul asistentului pentru momentul in care se incepe cautarea
                 print("Enjoy!")
                 url = 'https://www.youtube.com/watch?v=' + video_ids[0]
 
                 try:
-                    service_obj = Service("chromedriver.exe")
-                    driver = webdriver.Chrome(service=service_obj)
+                    service_obj = Service("chromedriver.exe")                                   # initializarea serviciului pentru drive-ului browser-ului
+                    driver = webdriver.Chrome(service=service_obj)                              # interactiunea cu Google Chrome ( chromedriver )
                     driver.get(url)                                                             # accesarea link-ului generat
                 except (selenium.common.exceptions.WebDriverException) as e:
                     print("Nu gasesc chromedrive! Te rog verifica integritatea proiectului!")
@@ -100,18 +100,18 @@ try:
                     time.sleep(10)
                     exit()
 
-                time.sleep(200)                                                            # timp de acces in browser -> 200s
+                time.sleep(200)                                                                 # timp de acces in browser -> 200s
 
                                                          # @@@ Main Function @@@
 
     if __name__ == '__main__':
         comenzi = {
-            'search youtube': automateYoutube}                                           # dictionar configurat in prealabil - ( comanda vocala: comanda exec sistem)
+            'search youtube': automateYoutube}                                           # dictionar configurat in prealabil (comanda vocala: comanda exec sistem)
         txt = 'search youtube for rammstein' or 'search youtube for lady gaga' or 'search youtube for metallica'
         txt_curat = txt.replace('', '+')
         txt_curat.split('for')
         comanda = ['search youtube', 'rammstein du hast', 'lady gaga poker face',
-                   'metallica the unforgiven']                                          # lista cu melodii
+                   'metallica the unforgiven']                                                  # lista cu melodii
         executa_comanda = comenzi[comanda[0]]
         executa_comanda(comanda[1])
 
