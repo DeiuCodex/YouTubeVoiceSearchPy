@@ -5,8 +5,10 @@ ETcTI Anul 2, Sg 3.1, Seria B, 2022-2024
 Cautare automata pe YouToube - dintr-o lista deja existenta
 Profesor coordonator: Bogdan Dragulescu, Razvan Vilceanu
 Universitatea Politehnica Timisoara
+
 Echipa: 31-E1
 Studenti: Lupşan Adrian-Florin, Matală Andrei, Matieş Andrei-Mihai
+
 Tema proiect: D4-T2 | Detecție comanda vocală.
 Implementarea unui script ce căută un videoclip pe platforma youtube folosind o comandă vocală în
 care se precizează numele videoclipului.
@@ -24,7 +26,7 @@ import time                                                                     
 try:
     def voice(message1):
         """
-        Functie pentru Voice Assistant
+        Functie pentru configurare Voice Assistant
         """
         en = pyttsx3.init()                                                         # initializare asistent vocal                                                         
         en.say(message1)                                                            # comanda unde se primeste mesajul ce va fi rostit
@@ -73,26 +75,26 @@ try:
             else:
                 boo = True
                 print("OK")
-                search_keyword = MyText                                           # stocarea melodiei rostite intr-o variabila
-                search_keyword_clear = search_keyword.replace(' ','+')            # in loc de spatiu dintre cuvinte, se adauga "+" specific sintaxei YouTube*
+                search_keyword = MyText                                                        # stocarea melodiei rostite intr-o variabila
+                search_keyword_clear = search_keyword.replace(' ','+')                         # in loc de spatiu intre cuvinte, adauga "+" specific YouTube*
                 html = urllib.request.urlopen(
                     "https://www.youtube.com/results?search_query=" + search_keyword_clear)    # generarea link-ului
                 video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
 
-                print("Link-ul generat: https://www.youtube.com/watch?v=" + video_ids[0])       # afisare link generat
+                print("Link-ul generat: https://www.youtube.com/watch?v=" + video_ids[0])      # afisare link generat
 
                 print("Se asteapta deschidere Youtube...")
                 voice("I found what you want. This might take a while, please wait!")
 
                 time.sleep(10)
-                voice("Now I'm ready! Enjoy!")                                                   # anuntul asistentului pentru momentul in care se incepe cautarea
+                voice("Now I'm ready! Enjoy!")                                                  # anuntul asistentului pentru momentul in care se incepe cautarea
                 print("Enjoy!")
                 url = 'https://www.youtube.com/watch?v=' + video_ids[0]
 
                 try:
-                    service_obj = Service("chromedriver.exe")                                   # initializarea serviciului pentru drive-ului browser-ului
-                    driver = webdriver.Chrome(service=service_obj)                              # interactiunea cu Google Chrome ( chromedriver )
-                    driver.get(url)                                                             # accesarea link-ului generat
+                    service_obj = Service("chromedriver.exe")                                  # initializarea serviciului pentru drive-ului browser-ului
+                    driver = webdriver.Chrome(service=service_obj)                             # interactiunea cu Google Chrome ( chromedriver )
+                    driver.get(url)                                                            # accesarea link-ului generat
                 except (selenium.common.exceptions.WebDriverException) as e:
                     print("Nu gasesc chromedrive! Te rog verifica integritatea proiectului!")
                     time.sleep(2)
@@ -102,14 +104,15 @@ try:
 
                 time.sleep(200)                                                                 # timp de acces in browser -> 200s
 
+                
                                                          # @@@ Main Function @@@
 
-    if __name__ == '__main__':
+    if __name__ == '__main__':                                                           # verificare că am pornit aplicația din fișierul curent
         comenzi = {
             'search youtube': automateYoutube}                                           # dictionar configurat in prealabil (comanda vocala: comanda exec sistem)
-        txt = 'search youtube for rammstein' or 'search youtube for lady gaga' or 'search youtube for metallica'
-        txt_curat = txt.replace('', '+')
-        txt_curat.split('for')
+        txt = 'search youtube for rammstein' or 'search youtube for lady gaga' or 'search youtube for metallica' # ce se rosteste de utilizator
+        txt_curat = txt.replace('', '+')                                                 # in loc de spatiu intre cuvinte, adauga "+" specific YouTube*
+        txt_curat.split('for')                                                           # se cauta ceea ce s-a rostit dupa " for "
         comanda = ['search youtube', 'rammstein du hast', 'lady gaga poker face',
                    'metallica the unforgiven']                                                  # lista cu melodii
         executa_comanda = comenzi[comanda[0]]
