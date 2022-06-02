@@ -118,3 +118,27 @@ try:
 
 except(KeyboardInterrupt, MemoryError, ResourceWarning, ModuleNotFoundError, ConnectionError) as e:
         print("Script-ul a fost inchis de catre utilizator sau din alt motiv.")
+        
+        
+        
+          """
+      Cerințe minimale:
+        1. Se va folosi un microfon pentru a capta comanda vocală.
+        2. Scriptul trebuie să identifice o anumită comandă vocală dintr-o listă configurată în prealabil.
+           Lista conține perechi de valori de tipul: (comanda vocală, comanda de executat pe sistem)
+        3. Dacă comanda vocală a fost identificată, script-ul va căuta videoclipul respectiv pe youtube.
+        
+        * sintaxa YouTube prevede:
+        
+        https://www.youtube.com/results?search_query=rammstein+du+hast (CORECT)
+        https://www.youtube.com/results?search_query=rammstein du hast (INCORECT)
+        
+        Folosind fara +, in mod normal in search va interveni doar "rammstein", dar nici in acest caz Python nu reuseste sa interpereteze. 
+        Folosind totusi in browser-ul normal varianta (INCORECT), browser-ul va folosi " %20 " in loc de spatiu si va adauga "+" de la sine, dar aici in cod, e important sa tinem cont de "+" !!!
+        
+        
+        ** se creaza o variabila exec_comanda unde din dictinarul comenzi, folosim primul element "search youtube" (comanda[0] )
+        
+        *** se executa elementul 1 din lista comanda, anume rammstein du hast. tinand cont si de influenta dictionarului predefinit. Unde se executa comanda vocala (de catre utilizator) si comanda executata de sistem (automateYoutube)
+        
+        """
