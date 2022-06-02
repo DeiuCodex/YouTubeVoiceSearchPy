@@ -77,8 +77,7 @@ try:
                 print("OK")
                 search_keyword = MyText                                                        # stocarea melodiei rostite intr-o variabila
                 search_keyword_clear = search_keyword.replace(' ','+')                         # in loc de spatiu intre cuvinte, adauga "+" specific YouTube*
-                html = urllib.request.urlopen(
-                    "https://www.youtube.com/results?search_query=" + search_keyword_clear)    # generarea link-ului
+                html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + search_keyword_clear)    # generarea link-ului
                 video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
 
                 print("Link-ul generat: https://www.youtube.com/watch?v=" + video_ids[0])      # afisare link generat
@@ -108,13 +107,11 @@ try:
                                                          # @@@ Main Function @@@
 
     if __name__ == '__main__':                                                           # verificare că am pornit aplicația din fișierul curent
-        comenzi = {
-            'search youtube': automateYoutube}                                           # dictionar configurat in prealabil (comanda vocala: comanda exec sistem)
+        comenzi = {'search youtube': automateYoutube}                                   # dictionar configurat in prealabil (comanda vocala: comanda exec sistem)
         txt = 'search youtube for rammstein' or 'search youtube for lady gaga' or 'search youtube for metallica' # ce se rosteste de utilizator
         txt_curat = txt.replace('', '+')                                                 # in loc de spatiu intre cuvinte, adauga "+" specific YouTube*
         txt_curat.split('for')                                                           # se cauta ceea ce s-a rostit dupa " for "
-        comanda = ['search youtube', 'rammstein du hast', 'lady gaga poker face',
-                   'metallica the unforgiven']                                                  # lista cu melodii
+        comanda = ['search youtube', 'rammstein du hast', 'lady gaga poker face', 'metallica the unforgiven']   # lista cu comenzi ce sunt acceptate
         executa_comanda = comenzi[comanda[0]]                                                   # **
         executa_comanda(comanda[1])                                                             # ***
 
