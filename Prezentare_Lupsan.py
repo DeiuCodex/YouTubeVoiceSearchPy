@@ -53,7 +53,7 @@ try:
                     searchquery = speak.listen(speaky)                            # inregistrarea vocii
                     MyText = speak.recognize_google(
                         searchquery)                                              # utilizarea Google Speech Recognition pentru prelucrare audio
-                    MyText = MyText.lower()                                       # textul rostit va fi in totalitate 
+                    MyText = MyText.lower()                                       # textul rostit va fi in totalitate convertit in litere mici
 
             except sr.RequestError as e:
                 print("Nu am gasit rezultate; {0}".format(e))
