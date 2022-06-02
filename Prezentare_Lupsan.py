@@ -124,7 +124,12 @@ except(KeyboardInterrupt, MemoryError, ResourceWarning, ModuleNotFoundError, Con
         
         
         """
-      
+      Cerințe minimale:
+        1. Se va folosi un microfon pentru a capta comanda vocală.
+        2. Scriptul trebuie să identifice o anumită comandă vocală dintr-o listă configurată în prealabil.
+           Lista conține perechi de valori de tipul: (comanda vocală, comanda de executat pe sistem)
+        3. Dacă comanda vocală a fost identificată, script-ul va căuta videoclipul respectiv pe youtube.
+        
         * sintaxa YouTube prevede:
         
         https://www.youtube.com/results?search_query=rammstein+du+hast (CORECT)
